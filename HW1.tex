@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+%\usepackage{graphicx}    % needed for including graphics e.g. EPS, PS
+\usepackage{setspace}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\topmargin
+-1.5cm % read Lamport p.163
+\oddsidemargin
+-0.04cm % read Lamport p.163
+\evensidemargin
+-0.04cm % same as oddsidemargin but for left-hand pages
+\textwidth
+16.59cm
+\textheight
+21.94cm
+%\pagestyle{empty}       % Uncomment if don't want page numbers
+\parskip
+7.2pt % sets spacing between paragraphs
+\renewcommand{\baselinestretch}{1} % Uncomment for 1.5 spacing between lines
+\parindent
+0pt % sets leading space for paragraphs
+
+\begin{document}
+	\title{Math 317: Theory Of Linear Algebra, Spring 2024\\ Homework Assignment
+	1}
+	\author{\\ \textbf{Name:}
+	Diego Perez}
+	\date{}
+	\maketitle
+
+
+  {\bf Problem 1.} Let $x, y \in \mathbb{R}$. Prove that $(-x)(-y) = xy$
+  \textit{ Sol. }
+  \begin{itemize}
+    \item[] We want: \begin{align*}
+    & (-x)(-y) = xy \\
+    \end{align*}
+  \item[] Note: \begin{align*}
+    & 0 + x = x \forall x \in \mathbb{R} \\
+    & 0x  = 0 \forall x \in \mathbb{R} \\
+  \end{align*}
+\item[] Therefore it follows that: \begin{align*}
+    & (-x)(-y) = (-x)(-y) + 0 \\
+    & (-x)(-y) = (-x)(-y) + 0y \\
+    & (-x)(-y) = (-x)(-y) + (-x + x)y \\
+    & (-x)(-y) = (-x)(-y) + (-x)y + xy \\
+    & (-x)(-y) = ((-x)(-y) + (-x)y) + xy \\ 
+    & (-x)(-y) = (-x)((-y) + y) + xy\\
+    & (-x)(-y) = (-x)(0) + xy\\
+    & (-x)(-y) = 0 + xy \\
+    & (-x)(-y) = xy. \Box \\
+  \end{align*}     
+  \end{itemize}
+	
+  \clearpage
+  {\bf Problem 2.} Use induction to prove that\begin{align*}
+    & \sum_{k=1}^{n} k = \frac{n(n+1)}{2} \\
+  \end{align*}
+  \textit{ Sol. }
+	\begin{itemize}
+    \item[] Base case, $n = 1$ \begin{align*}
+        & \sum_{k=1}^{1} k = \frac{1(1+1)}{2} \\
+        & 1 = \frac{2}{2} \\
+        & 1 = 1 \checkmark \\
+    \end{align*} 
+  \item[] Assume true for $n = 1, 2, 3 \ldots n$ \begin{align*}
+      & \sum_{k=1}^{n} k = \frac{n(n+1)}{2} \\
+      & \sum_{k=1}^{n} k + (n+1) = \frac{n(n+1)}{2} + (n+1) \\
+      & \frac{n(n+1)}{2} + \frac{(2n) + 2}{2} = \frac{n(n+1)}{2} + \frac{2(n+1)}{2} \\
+      & \frac {n^{2} + 3n + 2}{2} = \frac{n^{2} + 3n + 2}{2} \checkmark \\
+    \end{align*}
+  \item[] Since the statement holds for $n = 1, 2, 3 \ldots n$ and $n+1$,
+    then it holds for all $n \in \mathbb{N}$. $\Box$
+	\end{itemize}
+
+  \clearpage
+  {\bf Problem 3.} 	Prove that if $\alpha \in \mathbb{R}$ and $\mathbf{x} \in \mathbb{R}^n$ are such that
+  $\alpha \mathbf{x} = 0$, then $\alpha = 0$ or $\mathbf{x} = \mathbf{0}$
+  \textit{ Sol. }
+  \begin{itemize}
+    \item[] We have two cases, $\alpha = 0$ or $\alpha \neq 0$ in which case $\mathbf{x} = \mathbf{0}$.
+    \item[] Case 1: $\alpha = 0$ \begin{itemize}
+        \item[] In this case, the proof is trivial since $\alpha = 0$. We know from class that
+          multipying any vector by $0$ will result in $\mathbf{0}$.
+      \end{itemize}
+    \item[] Case 2: $\alpha \neq 0$ \begin{itemize}
+        \item[] Since, \begin{align*} & \alpha \neq 0 \\ \end{align*}
+      \item[] We know that \begin{align*}
+        & \frac{1}{\alpha} \in \mathbb{R} \\
+      \end{align*}
+    \item[] Thus, \begin{align*}
+        & \frac{1}{\alpha} \alpha \mathbf{x}_k = \frac{1}{\alpha} 0 \\
+        & (\frac{1}{\alpha} \alpha) \mathbf{x}_k = 0 \\
+        & 1 \mathbf{x}_k = 0 \\
+        & \mathbf{x}_k = 0 \checkmark \\
+      \end{align*}
+      \end{itemize}
+    \item[] Since any element $\mathbf{x}_k = 0$, then we know that $\mathbf{x} = \mathbf{0}$. $\Box$
+
+      
+	\end{itemize}
+
+  \clearpage
+  {\bf Problem 4.} Find a square roof $i$; i.e find a complex number $z$ such that \begin{align*} & z^2 = i\end{align*}
+  \textit{ Sol. }
+	\begin{itemize}
+    \item[] Let $z \in \mathbb{C}$ satisfy the proposition
+    \item[] Therefore, \begin{align*}
+      & z^2 = i \\
+      & (a + bi)^2 = i\\
+\end{align*}
+\item[] Where $a, b \in \mathbb{R}$ and $a = \Re{z}, b = \Im{z}$
+\item[] Thus, \begin{align*}
+  & (a + bi)^2 = i \\
+  & a^2 + 2abi - b^2 = i \\
+  & (a^2 - b^2) + 2abi = i \\
+\end{align*}
+\item[] We need $a^2 - b^2 = 0$ and $2ab = 1$
+\item[] This gives: 
+\begin{align*}
+    &  a = \pm b\\
+  \end{align*}
+
+    
+        \item[] If $a = -b$, then \begin{align*}
+      & 2ab = 1 \\
+      & 2b(-b) = 1 \\
+      & -2a^2 = 1 \\
+      & a^2 = -\frac{1}{2} \\
+      & \text{This is not possible since } a \in \mathbb{R} \\
+      \end{align*}
+    \item[] If $a = b$, then \begin{align*}
+        & 2ab = 1\\
+        & 2b^2 = 1\\
+        & b^2 = \frac{1}{2}\\
+        & b = \pm \frac{1}{\sqrt{2}}\\
+      \end{align*}
+\item[] Thus, \begin{align*}
+     & z = a + bi \\
+     & z = \pm (\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i ).\Box \\
+   \end{align*}
+\end{itemize}
+
+\clearpage
+	{\bf Problem 5.} A symmetric matrix is an $n \times n$ matrix such that $A^\top = A$. A
+  skew-symmetric matrix is an $n \times n$ matrix such that $A^\top = -A$
+\begin{itemize}
+  \item[(a)] Prove that \begin{align*}
+      & \frac{1}{2}(A + A^\top) \text{ and } \frac{1}{2}(A - A^\top)\\
+    \end{align*} are symmetric and skew-symmetric, respectively.\\
+
+    \textit{ Sol. }
+    \begin{itemize}
+      \item[] Consider \begin{align*}
+        & (\frac{1}{2}(A + A^\top))^\top \\
+        & (\frac{1}{2}A + \frac{1}{2}A^\top))^\top \\
+        & (\frac{1}{2}A^\top + \frac{1}{2}A) \\
+      \end{align*}
+    \item[] Thus, \begin{align*}
+      & (\frac{1}{2}(A + A^\top))^\top =  \frac{1}{2}(A + A^\top) \text{ is symmetric.}\\
+    \end{align*}
+  \item[] Now, consider \begin{align*}
+      & (\frac{1}{2}(A - A^\top))^\top \\
+      & (\frac{1}{2}A - \frac{1}{2}A^\top))^\top \\
+      & (\frac{1}{2}A^\top - \frac{1}{2}A) \\
+    \end{align*}
+  \item[] Thus, \begin{align*}
+      & (\frac{1}{2}(A - A^\top))^\top = (-1)(\frac{1}{2}(A - A^\top))  \\
+    \end{align*}
+    \end{itemize}
+
+
+  \item[(b)] Prove that for every $n \times n$ matrix $A$ there exists unique 
+    matrices $S$ and $K$ such that $S$ is symmetric, $K$ is skew-symmetric, and
+    $A = S + K$.
+    \textit{ Sol. }
+    \begin{itemize}
+      \item[] We know from $(a)$ that \begin{align*}
+          & \frac{1}{2}(A + A^\top) \text{ is symmetric. and}\\
+          & \frac{1}{2}(A - A^\top) \text{ is skew-symmetric.}\\
+        \end{align*}
+      \item[] Thus, let \begin{align*}
+          & S = \frac{1}{2}(A + A^\top) \text{ and}\\
+          & K = \frac{1}{2}(A - A^\top)\\
+        \end{align*}
+      \item[] Evaluate, \begin{align*}
+          & S + K = \frac{1}{2}(A + A^\top) + \frac{1}{2}(A - A\top) \\
+          & S + K = \frac{1}{2}(A + A + A^\top - A^\top)\\
+          & S + K = \frac{1}{2}(2A)\\
+          & S + K = A \checkmark\\
+        \end{align*}
+      \item[]Therefore, $S, K$ are a symmetric and skew-symmetric tuple of 
+        matrices such that $A = S + K$.
+      \item[] Assume that there exists another pair of matrices $S', K'$ such that
+        $A = S' + K'$ and $S'$ is symmetric and $K'$ is skew-symmetric.
+      \item[] Therefore, 
+        \begin{align*}
+          & (S + K) - (S' + K') = A - A \\
+          & (S + K) - (S' + K') = 0 \\
+          & (S - S') + (K - K') = 0 \\
+        \end{align*}
+      \item[] Observe that $(S - S')$ is symmetric and $(K - K')$ is skew-symmetric: \begin{align*}
+        & (S - S')^\top = S^\top - S'^\top \\
+        & (S - S')^\top = S - S' \\
+        & \text{Same applies for } (K - K') \\
+      \end{align*}
+    \item[]  Thus, the matrix \begin{align*}
+      & (S - S') + (K - K') = 0 \\
+      \end{align*} results in a symmetric and skew-symmetric matrix, which only happens in the zero matrix.
+    \item[] Therefore, 
+      \begin{align*}
+        & (S - S') = 0 \text{ and } (K - K') = 0 \\
+      \end{align*}
+    \item[] Thus, \begin{align*}
+      & S = S' \text{ and } K = K' \\
+      \end{align*}
+    \item[] Finally, we have shown that there exists a unique pair of matrices $S, K$ such that
+      $A = S + K$ and $S$ is symmetric and $K$ is skew-symmetric. $\Box$
+
+    \end{itemize}
+\end{itemize}
+\clearpage
+	{\bf Problem 6.} An idempotent matrix is a matrix $A$ such that $A^2 = A$.
+  Prove that if $A$ is idempotent, then $I - A$ is also idempotent.\\
+  \textit{ Sol. }
+  \begin{itemize}
+    \item[] Let $A \in \mathbb{R}$ be an idempotent matrix.
+    \item[] Evaluate the following: \begin{align*}
+        & (I - A)^2 = (I - A)(I - A) \\
+        & (I - A)^2 = I^2 - IA - AI + A^2 \\
+        & (I - A)^2 = I - 2A + A^2 \\
+        & (I - A)^2 = I - 2A + A \\
+        & (I - A)^2 = I - A \\
+      \end{align*}
+    \item[] Thus, $(I - A)$ is idempotent. $\Box$
+  \end{itemize}
+  \end{document}
