@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts,mathrsfs,bbm}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\aug}{\fboxsep=-\fboxrule\!\!\!\fbox{\strut}\!\!\!}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tb}{\textbf}
+\newcommand{\tn}{\textnormal}
+
+\pagestyle{empty}
+
+\begin{document}
+	\title{Math 317: Theory Of Linear Algebra, Spring 2024\\ Homework Assignment
+	2}
+	\author{\\ \textbf{Name:}
+	Diego Perez}
+	\date{}
+	\maketitle
+
+\begin{enumerate}
+	\item Use row operations to describe the set of solutions of
+	\begin{align*}
+    x + 3 y - 5 z & = 4 \\
+		x + 4 y - 8 z & = 7 \\
+		-3x - 7 y + 9 z & = -6
+	\end{align*}
+\item[] \textit{ Sol. }
+  \begin{itemize}
+    \item[] First, we can write the system of equations as an augmented matrix \begin{align*}
+      \begin{bmatrix}
+        1 & 3 & -5 &\aug& 4 \\
+        1 & 4 & -8 &\aug& 7 \\
+        -3 & -7 & 9&\aug& -6 \\
+      \end{bmatrix}
+      \end{align*}
+    \item[] Then, we perform the following operations \begin{align*}
+      {R_2 - R_1 = R_2}
+      \begin{bmatrix}
+      1 & 3 & -5 &\aug& 4 \\
+      1 & 4 & -8 &\aug& 7 \\
+      -3 & -7 & 9&\aug& -6 \\
+      \end{bmatrix}\\
+      {R_3 + 3R_1 = R_3}
+      \begin{bmatrix}
+      1 & 3 & -5 &\aug& 4 \\
+      0 & 1 & -3 &\aug& 3 \\
+      -3 & -7 & 9&\aug& -6 \\
+      \end{bmatrix}\\
+      R_3 - 2R_2 = R_3
+      \begin{bmatrix}
+      1 & 3 & -5 &\aug& 4 \\
+      0 & 1 & -3 &\aug& 3 \\
+      0 & 2 & -6&\aug& 6 \\
+      \end{bmatrix}\\
+      R_3 - 2R_2 = R_3
+      \begin{bmatrix}
+      1 & 3 & -5 &\aug& 4 \\
+      0 & 1 & -3 &\aug& 3 \\
+      0 & 0 & 0&\aug& 0 \\
+      \end{bmatrix}\\
+      R1 - 3R2 = R1
+      \begin{bmatrix}
+      1 & 0 & 4 &\aug& -5 \\
+      0 & 1 & -3 &\aug& 3 \\
+      0 & 0 & 0&\aug& 0 \\
+    \end{bmatrix}
+    \end{align*}
+  \item[] Then, we can write the system of equations as \begin{align*}
+    x + 4z = -5 \\
+    y - 3z = 3 \\
+  \end{align*}
+\item[] Or, \begin{align*}
+    x = -5 - 4z \\
+    y = 3 + 3z \\
+  \end{align*}
+  \item[] Thus, the set of solutions is given by \begin{align*}
+      \mathbf{x} = \begin{bmatrix}
+        -5 - 4z \\
+        3 + 3z \\
+        z
+        \end{bmatrix} = \begin{bmatrix}
+        -5 \\
+        3 \\
+        0
+      \end{bmatrix} + z \begin{bmatrix}
+        -4 \\
+        3 \\
+        1
+      \end{bmatrix}
+    \end{align*}
+ $\Box$
+  \end{itemize}
+
+  \clearpage
+	\item Let $x_1,\ldots,x_{n+1} \in \R$ be distinct, and let $y_1,\ldots,y_{n+1} \in \R$. Prove that there exists a unique degree $n$ polynomial $p$ such that $p(x_k) = y_k$ for all $k$.
+  \item[] \textit{ Sol. }
+    \begin{itemize}
+      \item[] Another way we can describe the polynomial $p(x_k)$ is \begin{align*}
+        p(x_k) = a_0 + a_1 x_k + a_2 x_k^2 + \ldots + a_n x_k^n = y_k \\
+        p(x_k) = \sum_{i=0}^{n} a_i x_k^i = y_k
+      \end{align*}
+      \item[] Consider the Lagrange interpolating polynomial \begin{align*}
+        p(x) = \sum_{k=1}^{n+1} y_k \ell_k(x)
+      \end{align*}
+    \item[] Where \begin{align*}
+      \ell_k(x) = \prod_{i=1, i \neq k}^{n+1} \frac{x - x_i}{x_k - x_i}
+    \end{align*}
+  \item[] Note that there are two main scenarios to consider, \begin{itemize}
+      \item[] If $i = k$ then \begin{align*}
+        \frac{x - x_i}{x_k - x_i} = \frac{x - x_k}{x_k - x_k} = 1
+      \end{align*}
+      \itemp[] If $i \neq k$ then \begin{align*}
+        \frac{x - x_i}{x_k - x_i} = \frac{x - x_i}{x_k - x_i}
+      \end{align*} will tend towards zero and these terms will vanish. 
+    \end{itemize}
+  \item[] Therefore, \begin{align*}
+      p(x_k) = \sum_{k=1}^{n+1} y_k \ell_k(x_k) = y_k
+    \end{align*}
+\item[] As far as uniqueness goes, consider the following.
+  \item[] Suppose that there are two polynomials $p(x)$ and $q(x)$ of degree at most $n$ such that \begin{align*}
+    p(x_k) = y_k = q(x_k)
+  \end{align*}
+\item[] Then \begin{align*}
+    p(x_k) - q(x_k) = 0
+  \end{align*} has $n+1$ distinct roots (since it is zero at n + 1 distinct points). 
+\item[] Therefore, \begin{align*}
+    p(x) - q(x) = 0\\
+    p(x) = q(x)
+  \end{align*} and the polynomial is unique. $\Box$
+
+    \end{itemize}
+    \clearpage
+	\item Let $V$ be a vector space. Use induction to show that
+  \begin{equation*}
+		n v = \sum_{k=1}^n v = \underbrace{v + \ldots + v}_{n \; \tn{times}}
+	\end{equation*}
+	holds for all $n \in \{1,2,3,\ldots\}$ and $v \in V$.
+
+  \item[] \textit{ Sol. }
+    \begin{itemize}
+      \item[] Note, for $n = 1$ \begin{align*}
+          & 1 v = v \\
+          & \sum_{k=1}^{1} v = v \checkmark \\
+        \end{align*}
+        holds. 
+      \item[] Suppose that for $n = 1, 2, 3 \ldots n$ \begin{align*}
+          & n v = \sum_{k=1}^{n} v \\
+        \end{align*}
+        holds. 
+      \item[] Then for $n+1$ \begin{align*}
+          & (n+1)v = nv + v \\
+          & (n+1)v = \sum_{k=1}^{n} v + v \\
+          & (n+1)v = \sum_{k=1}^{n+1} v \checkmark \\
+        \end{align*}
+      \item[] Since the statement holds for $n = 1, 2, 3 \ldots n$ and $n+1$,
+        then it holds for all $n \in \mathbb{N}$. $\Box$
+    \end{itemize}
+		
+  \clearpage
+	\item 
+	\begin{enumerate}
+		\item Prove that $\{ [x_1,x_2,x_3] \in \R^3 \colon x_1 + x_2 + x_3 = 0 \}$ is a subspace of $\R^3$
+    \item[] \begin{itemize} 
+        \item[]  \textit{ Sol. }
+        \item[] We want to show that the set is closed under the zero vector 
+          property, addition and scalar multiplication. 
+        \item[] Firstly, \begin{itemize}
+            \item[] For any vector $[x_1, x_2, x_3] \in M$ we know that 
+                $x_1 + x_2 + x_3 = 0$ 
+            \item[] Consider the vector $[-x_1, -x_2, -x_3]$ \begin{align*}
+                -x_1 - x_2 - x_3 = (-1)(x_1 + x_2 + x_3) \\
+                -x_1 - x_2 - x_3 = (-1)(0) \\
+                -x_1 - x_2 - x_3 = 0 \\
+              \end{align*}
+            \item[] Thus, $[-x_1, -x_2, -x_3] \text{, its additive inverse, } \in M$. 
+            \item[] Therefore, $M$ is closed under the zero vector property. $\checkmark$ 
+          \end{itemize}
+        \item[] Secondly,
+            \begin{itemize}
+              \item[] For any two vectors, $[x_1, x_2, x_3], [y_1, y_2, y_3] \in M$ 
+                we know that \begin{align*}
+                x_1 + x_2 + x_3 = 0 \\
+                y_1 + y_2 + y_3 = 0 \\
+              \end{align*}
+            \item[] Then, \begin{align*}
+                (x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = (x_1 + x_2 + x_3) +
+                                                          (y_1 + y_2 + y_3)\\ 
+                (x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3)= 0 + 0 \\
+                (x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = 0 \\
+              \end{align*}
+            \item[] Thus, for any vectors $[x_1, x_2, x_3], [y_1, y_2, y_3] \in M$ 
+              we have that \begin{align*}
+                [x_1, x_2, x_3] + [y_1, y_2, y_3] \in M \\
+              \end{align*}
+            \item[] Therefore, $M$ is closed under addition. $\checkmark$
+            \end{itemize}
+          \item[] Lastly,
+              \begin{itemize}
+                \item[] For any vector $[x_1, x_2, x_3] \in M$ and any scalar $\alpha \in \R$ we know that \begin{align*}
+                    x_1 + x_2 + x_3 = 0 \\
+                  \end{align*}
+                \item[]Then for $\alpha \in \mathbb{R}$ \begin{align*}
+                    \alpha[x_1, x_2, x_3] = [\alpha x_1, \alpha x_2, \alpha x_3] \\
+                \end{align*}
+                \item[] Additionally,
+                  \begin{align*}
+                    \alpha x_1 + \alpha x_2 + \alpha x_3 = \alpha(x_1 + x_2 + x_3) \\
+                    \alpha x_1 + \alpha x_2 + \alpha x_3 = 0
+                  \end{align*}
+              \item[] Therefore, $M$ is closed under scalar multiplication. $\checkmark$
+              \end{itemize}
+          \item[] Since $M$ is closed under the zero vector property, addition 
+            and scalar multiplication, then $M$ is a subspace of $\R^3$. $\Box$
+      \end{itemize}
+        
+		\item Prove that $\{ [x_1,x_2,x_3] \in \R^3 \colon x_1 x_2 x_3 = 0 \}$ is not a subspace of $\R^3$
+    \item[] \textit{ Sol. }
+      \begin{itemize}
+        \item[] We want to show that the set is not closed under the zero vector 
+          property, addition or scalar multiplication. 
+        \item[] Consider the vectors $[1, 0, 0], [0, 1, 0] \in M$ \begin{align*}
+            1 \cdot 0 \cdot 0 = 0 \\
+            0 \cdot 1 \cdot 0 = 0 \\
+          \end{align*}
+        \item[] Then, \begin{align*}
+            [1, 0, 0] + [0, 1, 0] = [1, 1, 0] \notin M \\
+          \end{align*}
+        \item[] Therefore, $M$ is not closed under addition and cannot be a 
+          subspace of $\mathbb{R^3}$. $\Box$
+      \end{itemize}
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+
